@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
     buttonContainer: {
         flexDirection:"row",
         textAlign: 'center',
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        marginTop: 10
     },
     input: {
         backgroundColor: "#DEFAF9",

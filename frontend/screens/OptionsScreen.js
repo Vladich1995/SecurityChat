@@ -1,10 +1,13 @@
-import {View ,StyleSheet ,Alert,   KeyboardAvoidingView } from "react-native";
+import {View ,StyleSheet ,ImageBackground, SafeAreaView, Dimensions } from "react-native";
 import {useState} from "react";
+import { LinearGradient } from "expo-linear-gradient";
 import EmergencyButton from "../buttons/EmergencyButton";
 import MessageButton from "../buttons/MessageButton";
 import MessageForm from "../cases/MessageForm";
 
 function OptionsScreen ({route}) {
+    const width = Dimensions.get('window').width;
+    const height = Dimensions.get('window').height;
     const [needMessage, setNeedMessage] = useState(false);
     const username = route.params.name;
     const number = route.params.number;
@@ -23,27 +26,35 @@ function OptionsScreen ({route}) {
     };
 
     return (
-        <KeyboardAvoidingView style={styles.container} behavior="height" >
-            <View style={{flex: 1}}>
-                <View style={styles.messageContainer}>
-                    {needMessage && <MessageForm cancelHandler={cancelMessage} botToken={botToken} notificationsChannel={notificationsChannel} name={username} number={number} />}
-                </View>
+        <SafeAreaView style={[styles.container, {height: height, width: width}]} >
+            <View style={styles.messageContainer}>
+                    {needMessage ? <MessageForm cancelHandler={cancelMessage} botToken={botToken} notificationsChannel={notificationsChannel} name={username} number={number} />:
+                        <MessageButton messageHandler={messageHandler} />
+                    }
+            </View>           
+            <ImageBackground source={require('../images/Bnei_Ayish.jpeg')} resizeMode="contain" style={[styles.image]}>
                 <EmergencyButton botToken={botToken} emergencyGroup={emergencyGroup} name={username} number={number} />
-                <MessageButton messageHandler={messageHandler} />
-            </View>
-        </KeyboardAvoidingView>
+            </ImageBackground>
+        </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: '#093863',
-      
+      position: "absolute", 
+      backgroundColor: "white"
     },
     messageContainer: {
-        flex: 0.1,
-        alignItems: "center"
+        position: "absolute",
+        width: "100%",
+        height: 80,
+        alignItems: "center",
+        justifyContent: "center",
+        zIndex: 1,
+    },
+    image: {
+        flex: 1,
+        justifyContent: "center"
     }
   });
 

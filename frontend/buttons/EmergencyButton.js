@@ -8,7 +8,8 @@ function EmergencyButton  ({botToken, emergencyGroup, name, number})  {
     const [uri, setUri] = useState(null);
     const [location, setLocation] = useState(null);
     const { width } = Dimensions.get('window');
-    const circleSize = width * 0.5;
+    // const circleSize = width * 0.5;
+    const circleSize = 280;
     const timeoutRef = useRef(null);
 
 
@@ -30,7 +31,6 @@ function EmergencyButton  ({botToken, emergencyGroup, name, number})  {
     function handlePressIn  () {
         setIsPressed(true);
         timeoutRef.current = setTimeout(() => {
-            console.log('Button held down for 3 seconds or more!');
             handlePressOut();
             startRecording();
         }, 3000);
@@ -87,7 +87,6 @@ function EmergencyButton  ({botToken, emergencyGroup, name, number})  {
                 headers: { 'Content-Type': 'multipart/form-data' },
              });
             const data = await response.json();
-            console.log(data);
         } catch (error) {
             console.error(error);
         }
@@ -119,10 +118,10 @@ function EmergencyButton  ({botToken, emergencyGroup, name, number})  {
                     width: circleSize,
                     height: circleSize,
                     borderRadius: circleSize / 2,
-                    backgroundColor: isPressed ? "#F74949" : "#A13838"}]}
+                    backgroundColor: isPressed ? "#F74949" : "red"}]}
                 android_ripple={{ color: "#F74949" }}
             >
-                <Text>{isPressed ? "Keep pressing..." : 'Emergency'}</Text>
+                <Text style={styles.text} >{isPressed ? "המשך ללחוץ" : 'חירום'}</Text>
             </TouchableOpacity>
         </View>
     );
@@ -144,7 +143,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     text: {
-        fontSize: 17
+        fontSize: 30
     }
 });
 

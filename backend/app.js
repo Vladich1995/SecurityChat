@@ -25,7 +25,7 @@ app.listen(3000, function () {
 });
 
 mongoose
-    .connect("mongodb+srv://secchat:21436587@secchat.b2rcmo1.mongodb.net/?retryWrites=true&w=majority")
+    .connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@secchat.b2rcmo1.mongodb.net/?retryWrites=true&w=majority`)
     .then(() => {
         console.log("Connected to MongoDB");
     })

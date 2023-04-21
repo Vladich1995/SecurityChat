@@ -10,15 +10,13 @@ function MessageButton  ({messageHandler})  {
 
     return (
         <View style = {styles.container}>
-            <View style={{width: circleSize,
-                        height: circleSize,
-                        borderRadius: circleSize / 2,
+            <View style={{width: 150,
+                        height: 70,
                         overflow: "hidden"}}>
                 <Pressable style = {[styles.button, {
-                            width: circleSize,
-                            height: circleSize,
-                            borderRadius: circleSize / 2,}]} android_ripple={{ color: "#ACF5EB" }} onPress={sendMessage}>
-                    <Text style = {styles.text}>Message</Text>
+                            width: 150,
+                            height: 70,}]} android_ripple={{ color: "#ACF5EB" }} onPress={sendMessage}>
+                    <Text style = {styles.text}>דיווח מהיר</Text>
                 </Pressable>
             </View>
         </View>
@@ -36,7 +34,6 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: "#017CFE",
-        borderWidth: 1,
         alignItems: "center",
         justifyContent: "center",
     },

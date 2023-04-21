@@ -1,0 +1,6 @@
+{
+    "env":{
+        "DB_USER": "secchat",
+        "DB_PASSWORD": "21436587"
+    }
+}

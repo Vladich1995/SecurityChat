@@ -1,6 +1,5 @@
 import {View ,StyleSheet ,ImageBackground, SafeAreaView, Dimensions } from "react-native";
 import {useState} from "react";
-import { LinearGradient } from "expo-linear-gradient";
 import EmergencyButton from "../buttons/EmergencyButton";
 import MessageButton from "../buttons/MessageButton";
 import MessageForm from "../cases/MessageForm";

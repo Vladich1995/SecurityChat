@@ -1,7 +1,8 @@
 import {useState, useEffect} from "react";
 import { TextInput, View, StyleSheet, Button, Alert, ImageBackground, SafeAreaView } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { LinearGradient } from "expo-linear-gradient";
+import {BACKEND_URL} from '@env';
+
 
 
 function AuthScreen ({navigation}) {
@@ -10,7 +11,7 @@ function AuthScreen ({navigation}) {
 
     async function proceedHandler () {
         try{
-            await fetch("http://192.168.137.129:3000/verify/",{
+            await fetch(BACKEND_URL + ":3000/verify/",{
                 method: 'POST',
                 headers: {
                   Accept: 'application/json',
@@ -39,6 +40,7 @@ function AuthScreen ({navigation}) {
                 }
                 else{
                     storeToken(data.token);
+                    console.log("all good");
                     navigation.navigate("Home", { name: name, number: number });
                 }
             })
